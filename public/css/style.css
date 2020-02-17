@@ -3,8 +3,15 @@
 {
 
     font-family: sans-serif;
+    
 }
-table.bordered-table th,td{border: 1px solid #000; padding: 4px;}
+#contents h3,#contents h4
+{
+    font-weight:normal;
+    
+}
+
+table.bordered-table th,td{border: 1px solid #000; padding: 4px;font-weight:normal;}
 table.bordered-table {border-collapse: collapse;}
 
 .addprodstyle div
