@@ -19,7 +19,17 @@ function ProductRow(props) {
 class ProductAdd extends React.Component {
   constructor() {
     super();
+    this.state = {
+      value: '$'
+    };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({
+      value: event.target.value
+    });
   }
 
   handleSubmit(e) {
@@ -36,8 +46,6 @@ class ProductAdd extends React.Component {
     this.props.createProduct(product);
     form.productname.value = " ";
     form.category.value = " ";
-    form.price.value = "$";
-    form.imageurl.value = " ";
   }
 
   render() {
@@ -61,7 +69,8 @@ class ProductAdd extends React.Component {
     }, "Accessories")), React.createElement("label", null, "Price Per Unit"), React.createElement("input", {
       type: "text",
       name: "price",
-      defaultValue: "$"
+      value: this.state.value,
+      onChange: this.handleChange
     })), React.createElement("div", null, React.createElement("label", null, "Product Name"), React.createElement("input", {
       type: "text",
       name: "productname"

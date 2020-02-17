@@ -31,7 +31,13 @@ function ProductRow(props) {
 class ProductAdd extends React.Component {
   constructor() {
     super();
+    this.state = {value:'$'};
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+  handleChange(event)
+  {
+    this.setState({value:event.target.value});
   }
   handleSubmit(e) {    
     e.preventDefault();
@@ -42,7 +48,7 @@ class ProductAdd extends React.Component {
       productname: form.productname.value, price: removeddollarprice ,category: form.category.value, imageurl: form.imageurl.value,
     }
     this.props.createProduct(product);
-    form.productname.value = " "; form.category.value = " ";form.price.value ="$";form.imageurl.value = " ";
+    form.productname.value = " "; form.category.value = " ";
   }
   render() {
     return (
@@ -57,7 +63,7 @@ class ProductAdd extends React.Component {
               <option value="Accessories">Accessories</option>
           </select>
           <label>Price Per Unit</label>
-          <input type="text" name="price" defaultValue="$"/>
+          <input type="text" name="price" value={this.state.value} onChange={this.handleChange} />
         </div>
         <div>
           <label>Product Name</label>
